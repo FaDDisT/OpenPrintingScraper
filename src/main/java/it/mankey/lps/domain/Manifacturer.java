@@ -6,11 +6,18 @@ package it.mankey.lps.domain;
 public class Manifacturer {
     public final String name;
 
-    private Manifacturer(String name) {
+    private Manifacturer(final String name) {
         this.name = name;
     }
 
-    public static Manifacturer create(String name) {
+    public static Manifacturer create(final String name) {
         return new Manifacturer(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Manifacturer{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
