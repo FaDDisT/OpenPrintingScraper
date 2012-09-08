@@ -1,37 +1,34 @@
 package it.mankey.lps.core;
 
-import it.mankey.lps.core.OpenPrintingScraper;
 import it.mankey.lps.domain.Manifacturer;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import it.mankey.lps.domain.Printer;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
- * Created with IntelliJ IDEA.
- * User: guest-Pru6zv
- * Date: 08/09/12
- * Time: 09:48
- * To change this template use File | Settings | File Templates.
+ * @since 08-09-2012 09:48
  */
 public class OpenPrintingScraperIT {
 
     private final OpenPrintingScraper openPrintingScraper;
+    private static final String WELL_KNOWN_BRAND = "HP";
 
     public OpenPrintingScraperIT() throws IOException {
-        openPrintingScraper = new OpenPrintingScraper();
+        openPrintingScraper = OpenPrintingScraper.create();
     }
 
     @Test
     public void scraperShouldFindManifacturers() throws IOException {
         List<Manifacturer> manifacturers = openPrintingScraper.getManifacturers();
         Assert.assertTrue(!manifacturers.isEmpty());
+    }
+
+    @Test
+    public void getPrinterByBrand() throws IOException {
+        List<Printer> printers = openPrintingScraper.getPrinters(Manifacturer.create(WELL_KNOWN_BRAND));
+        Assert.assertTrue(!printers.isEmpty());
     }
 }
