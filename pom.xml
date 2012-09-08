@@ -4,9 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>LPS</groupId>
-    <artifactId>LPS</artifactId>
+    <groupId>it.mankey</groupId>
+    <artifactId>open-printing-scraper</artifactId>
     <version>1.0</version>
+    <name>open-printing-scraper</name>
+    <description>Scrapes http://www.openprinting.org/ for perfectly supported printers, then retrieves prices via google
+        shopping search API
+    </description>
 
     <dependencies>
         <dependency>
@@ -24,11 +28,6 @@
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
             <version>3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
