@@ -10,7 +10,8 @@ public class PriceScannerHelper {
         return CollectionUtils.array(
                 nameValuePair("key", apiKey),
                 nameValuePair("country", country.name()),
-                nameValuePair("q", "printer+" + printer.model)
+                nameValuePair("q", "printer+" + printer.model),
+                nameValuePair("restrictBy", "brand:" + printer.manifacturer.name)
         );
     }
 
