@@ -8,6 +8,7 @@ import java.util.List;
  * @since 07-09-2012 00:31
  */
 public class CollectionUtils {
+
     public static <E, T> List<T> map(final List<E> list, final Mapper<E, T> mapper) {
         final List<T> result = new ArrayList<T>(list.size());
         for (final E element : list) {
@@ -22,5 +23,9 @@ public class CollectionUtils {
             result.add(mapper.map(list.next()));
         }
         return result;
+    }
+
+    public static <T> T[] array(final T... ts) {
+        return ts;
     }
 }

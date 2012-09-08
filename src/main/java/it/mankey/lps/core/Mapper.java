@@ -6,5 +6,5 @@ package it.mankey.lps.core;
  * @since 07-09-2012 00:31
  */
 public interface Mapper<E, T> {
-    public T map(E object);
+    public T map(E element);
 }
