@@ -1,5 +1,6 @@
 package it.mankey.lps.core;
 
+import it.mankey.lps.TestConstants;
 import it.mankey.lps.domain.Manifacturer;
 import it.mankey.lps.domain.Printer;
 import org.junit.Assert;
@@ -14,7 +15,6 @@ import java.util.List;
 public class OpenPrintingScraperIT {
 
     private final OpenPrintingScraper openPrintingScraper;
-    private static final String WELL_KNOWN_BRAND = "HP";
 
     public OpenPrintingScraperIT() throws IOException {
         openPrintingScraper = OpenPrintingScraper.create();
@@ -22,13 +22,13 @@ public class OpenPrintingScraperIT {
 
     @Test
     public void scraperShouldFindManifacturers() throws IOException {
-        List<Manifacturer> manifacturers = openPrintingScraper.getManifacturers();
+        final List<Manifacturer> manifacturers = openPrintingScraper.getManifacturers();
         Assert.assertTrue(!manifacturers.isEmpty());
     }
 
     @Test
     public void getPrinterByBrand() throws IOException {
-        List<Printer> printers = openPrintingScraper.getPrinters(Manifacturer.create(WELL_KNOWN_BRAND));
+        final List<Printer> printers = openPrintingScraper.getPrinters(Manifacturer.create(TestConstants.WELL_KNOWN_BRAND));
         Assert.assertTrue(!printers.isEmpty());
     }
 }

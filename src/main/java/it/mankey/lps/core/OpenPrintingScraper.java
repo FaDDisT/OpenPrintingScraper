@@ -21,7 +21,7 @@ public class OpenPrintingScraper {
     private static final String MANIFACTURER_SELECTOR = "select#showby_manufacturer > option";
 
     private OpenPrintingScraper() throws IOException {
-        Properties properties = new Properties();
+        final Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("OpenPrintingScraper.properties"));
         LPS_URL = properties.getProperty("openprinting.url");
     }
@@ -49,7 +49,7 @@ public class OpenPrintingScraper {
         return CollectionUtils.map(perfectPrinterNodes, new Mapper<Element, Printer>() {
             @Override
             public Printer map(final Element element) {
-                return Printer.create(element.ownText());
+                return Printer.create(manifacturer, element.ownText());
             }
         });
     }
