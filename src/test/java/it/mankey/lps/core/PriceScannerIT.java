@@ -26,7 +26,7 @@ public class PriceScannerIT {
 
     @Test
     public void testGetQuotes() throws Exception {
-        final Printer testPrinter = Printer.create(Manifacturer.create(TestConstants.WELL_KNOWN_BRAND), "LaserJet 1100");
+        final Printer testPrinter = Printer.create(Manifacturer.create(TestConstants.WELL_KNOWN_BRAND), "Color LaserJet 5550");
         final List<Quote> quotations = priceScanner.getQuotes(testPrinter, Country.Alpha2.GB);
         Assert.assertTrue(!quotations.isEmpty());
     }
