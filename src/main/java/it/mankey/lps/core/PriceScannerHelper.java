@@ -4,7 +4,7 @@ import it.mankey.lps.domain.Country;
 import it.mankey.lps.domain.Printer;
 import org.apache.commons.httpclient.NameValuePair;
 
-import static it.mankey.lps.core.CollectionUtils.array;
+import static it.mankey.lps.util.CollectionUtils.array;
 import static org.apache.commons.lang.StringUtils.join;
 
 public class PriceScannerHelper {

@@ -1,4 +1,4 @@
-package it.mankey.lps.core;
+package it.mankey.lps.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;

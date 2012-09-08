@@ -1,4 +1,4 @@
-package it.mankey.lps.core;
+package it.mankey.lps.util;
 
 /**
  * @param <E> Collection element class

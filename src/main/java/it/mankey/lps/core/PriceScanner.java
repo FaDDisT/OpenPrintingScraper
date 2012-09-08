@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.mankey.lps.domain.Country;
 import it.mankey.lps.domain.Printer;
 import it.mankey.lps.domain.Quote;
+import it.mankey.lps.util.CollectionUtils;
+import it.mankey.lps.util.Mapper;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
