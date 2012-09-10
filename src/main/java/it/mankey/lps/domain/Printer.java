@@ -4,8 +4,9 @@ package it.mankey.lps.domain;
  * @since 08-09-2012 20:12
  */
 public final class Printer {
-    public final String model;
-    public final Manifacturer manifacturer;
+    private final String model;
+    private final Manifacturer manifacturer;
+    private static final int PRIME_NUMBER = 31;
 
     private Printer(final Manifacturer manifacturer, final String model) {
         this.manifacturer = manifacturer;
@@ -48,7 +49,15 @@ public final class Printer {
     @Override
     public int hashCode() {
         int result = model != null ? model.hashCode() : 0;
-        result = 31 * result + (manifacturer != null ? manifacturer.hashCode() : 0);
+        result = PRIME_NUMBER * result + (manifacturer != null ? manifacturer.hashCode() : 0);
         return result;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Manifacturer getManifacturer() {
+        return manifacturer;
     }
 }

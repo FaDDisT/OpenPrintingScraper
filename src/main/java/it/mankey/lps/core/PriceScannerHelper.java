@@ -7,20 +7,26 @@ import org.apache.commons.httpclient.NameValuePair;
 import static it.mankey.lps.util.CollectionUtils.array;
 import static org.apache.commons.lang.StringUtils.join;
 
-public class PriceScannerHelper {
+final class PriceScannerHelper {
 
-    public static NameValuePair[] buildQueryString(final Printer printer, final Country.Alpha2 country, final String apiKey) {
+    /**
+     * Utility classes should not have a public or default constructor.
+     */
+    private PriceScannerHelper() {
+    }
+
+    static NameValuePair[] buildQueryString(final Printer printer, final Country.Alpha2 country, final String apiKey) {
         return array(
                 nameValuePair("key", apiKey),
                 nameValuePair("country", country.name()),
-                nameValuePair("q", join(array(printer.manifacturer.name, printer.model, "printer -cartridge"), " ")),
+                nameValuePair("q", join(array(printer.getManifacturer().getName(), printer.getModel(), "printer -cartridge"), " ")),
                 nameValuePair("restrictBy",
-                        join(array(
-                                "brand:" + printer.manifacturer.name,
-                                "condition:new"
-                        ),
-                                ","
-                        )
+                              join(array(
+                                      "brand:" + printer.getManifacturer().getName(),
+                                      "condition:new"
+                              ),
+                                   ","
+                              )
                 ),
                 nameValuePair("ranking", "relevancy"),
                 nameValuePair("crowdBy", "accountId:1")

@@ -46,4 +46,8 @@ public final class Quote {
     public int hashCode() {
         return price != null ? price.hashCode() : 0;
     }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
 }

@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
  * @since 08-09-2012 10:10
  */
 public final class Manifacturer {
-    public final String name;
+    private final String name;
 
     private Manifacturer(final String name) {
         this.name = name;
@@ -47,5 +47,9 @@ public final class Manifacturer {
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    public String getName() {
+        return name;
     }
 }

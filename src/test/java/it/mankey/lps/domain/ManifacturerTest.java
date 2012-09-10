@@ -12,7 +12,7 @@ public class ManifacturerTest {
     public void testCreate() throws Exception {
         // should create an object with given name
         final Manifacturer manifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
-        Assert.assertEquals(Fixtures.MANIFACTURER_NAME, manifacturer.name);
+        Assert.assertEquals(Fixtures.MANIFACTURER_NAME, manifacturer.getName());
     }
 
     @Test(expected = IllegalArgumentException.class)

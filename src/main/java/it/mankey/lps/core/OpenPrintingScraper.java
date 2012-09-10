@@ -19,13 +19,13 @@ import java.util.Properties;
  */
 public final class OpenPrintingScraper {
 
-    private final String LPS_URL;
+    private final String lpsUrl;
     private static final String MANIFACTURER_SELECTOR = "select#showby_manufacturer > option";
 
     private OpenPrintingScraper() throws IOException {
         final Properties properties = new Properties();
         properties.load(this.getClass().getResourceAsStream("OpenPrintingScraper.properties"));
-        LPS_URL = properties.getProperty("openprinting.url");
+        lpsUrl = properties.getProperty("openprinting.url");
     }
 
     public static OpenPrintingScraper create() throws IOException {
@@ -33,7 +33,7 @@ public final class OpenPrintingScraper {
     }
 
     protected List<Manifacturer> getManifacturers() throws IOException {
-        final Document doc = Jsoup.connect(LPS_URL).get();
+        final Document doc = Jsoup.connect(lpsUrl).get();
         final Elements manifacturerNodes = doc.select(MANIFACTURER_SELECTOR);
         final List<Manifacturer> manifacturers = new ArrayList<Manifacturer>(manifacturerNodes.size());
         for (final Element manifacturer : manifacturerNodes) {
@@ -44,7 +44,7 @@ public final class OpenPrintingScraper {
     }
 
     protected List<Printer> getPrinters(final Manifacturer manifacturer) throws IOException {
-        final Document doc = Jsoup.connect(LPS_URL + "/manufacturer/" + manifacturer.name).get();
+        final Document doc = Jsoup.connect(lpsUrl + "/manufacturer/" + manifacturer.getName()).get();
         final Elements contents = doc.select("#content > div#two_col_col_1");
         final Elements printerNodes = contents.select("h3:contains(Perfectly), h3:contains(Mostly), a:gt(4)");
         final List<Element> perfectPrinterNodes = printerNodes.subList(1, printerNodes.indexOf(printerNodes.select("h3:contains(Mostly)").first()));

@@ -7,7 +7,10 @@ import java.util.List;
 /**
  * @since 07-09-2012 00:31
  */
-public class CollectionUtils {
+public final class CollectionUtils {
+
+    private CollectionUtils() {
+    }
 
     public static <E, T> List<T> map(final List<E> list, final Mapper<E, T> mapper) {
         final List<T> result = new ArrayList<T>(list.size());

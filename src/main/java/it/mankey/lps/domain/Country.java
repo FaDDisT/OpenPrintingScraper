@@ -4,6 +4,7 @@ package it.mankey.lps.domain;
  * @since 08-09-2012 22:06
  */
 public class Country {
+    @SuppressWarnings("UnusedDeclaration")
     public enum Alpha3 {
         ABW("Aruba"),
         AFG("Afghanistan"),
@@ -255,13 +256,18 @@ public class Country {
         ZMB("Zambia"),
         ZWE("Zimbabwe");
 
-        public final String name;
+        private final String name;
 
         Alpha3(final String name) {
             this.name = name;
         }
+
+        public String getName() {
+            return name;
+        }
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public enum Alpha2 {
         AD,
         AE,
