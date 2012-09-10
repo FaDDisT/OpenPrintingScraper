@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import java.util.Properties;
  * @since 08-09-2012 10:37
  */
 public final class OpenPrintingScraper {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenPrintingScraper.class);
 
     private final String lpsUrl;
     private static final String MANIFACTURER_SELECTOR = "select#showby_manufacturer > option";
@@ -38,7 +42,12 @@ public final class OpenPrintingScraper {
         final List<Manifacturer> manifacturers = new ArrayList<Manifacturer>(manifacturerNodes.size());
         for (final Element manifacturer : manifacturerNodes) {
             final String manifacturerName = manifacturer.attr("value");
-            manifacturers.add(Manifacturer.create(manifacturerName));
+            if (Manifacturer.canCreate(manifacturerName)) {
+                manifacturers.add(Manifacturer.create(manifacturerName));
+            }
+            else {
+                LOGGER.warn("Invalid manifacturer {}", manifacturerName);
+            }
         }
         return manifacturers;
     }

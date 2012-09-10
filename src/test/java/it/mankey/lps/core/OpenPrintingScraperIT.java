@@ -25,6 +25,7 @@ public class OpenPrintingScraperIT {
     public void scraperShouldFindManifacturers() throws IOException {
         final List<Manifacturer> manifacturers = openPrintingScraper.getManifacturers();
         Assert.assertTrue(!manifacturers.isEmpty());
+        Assert.assertTrue(!Fixtures.WELL_KNOWN_MANIFACTURERS.isEmpty());
         Assert.assertTrue(manifacturers.containsAll(Fixtures.WELL_KNOWN_MANIFACTURERS));
     }
 

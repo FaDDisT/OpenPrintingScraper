@@ -17,7 +17,25 @@ public class ManifacturerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreate_with_blank_name_throws_exception() throws Exception {
+        Manifacturer.create("   \n");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreate_with_null_name_throws_exception() throws Exception {
+        Manifacturer.create(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreate_with_empty_name_throws_exception() throws Exception {
         Manifacturer.create("");
+    }
+
+    @Test
+    public void testCanCreateShouldAcceptOnlyNonBlankStrings() throws Exception {
+        Assert.assertFalse(Manifacturer.canCreate(""));
+        Assert.assertFalse(Manifacturer.canCreate("  \n"));
+        Assert.assertFalse(Manifacturer.canCreate(null));
+        Assert.assertTrue(Manifacturer.canCreate(Fixtures.MANIFACTURER_NAME));
     }
 
     @Test

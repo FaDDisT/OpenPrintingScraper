@@ -1,6 +1,6 @@
 package it.mankey.lps.domain;
 
-import org.apache.commons.lang.StringUtils;
+import static org.apache.commons.lang.StringUtils.isBlank;
 
 /**
  * @since 08-09-2012 10:10
@@ -13,10 +13,14 @@ public final class Manifacturer {
     }
 
     public static Manifacturer create(final String name) {
-        if (StringUtils.isBlank(name)) {
+        if (!canCreate(name)) {
             throw new IllegalArgumentException("'name' can't be blank");
         }
         return new Manifacturer(name);
+    }
+
+    public static boolean canCreate(final String name) {
+        return !isBlank(name);
     }
 
     @Override
