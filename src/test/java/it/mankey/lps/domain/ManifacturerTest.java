@@ -40,9 +40,16 @@ public class ManifacturerTest {
 
     @Test
     public void testEquals() throws Exception {
-        final Manifacturer thisManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
-        final Manifacturer thatManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
-        Assert.assertEquals(thisManifacturer, thatManifacturer);
+        final Manifacturer thisTwinManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
+        final Manifacturer thatTwinManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
+        final Manifacturer otherManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME + " DIFFERENCE");
+        Assert.assertEquals(thisTwinManifacturer, thatTwinManifacturer);
+        Assert.assertEquals(thisTwinManifacturer, thisTwinManifacturer);
+        Assert.assertFalse(thisTwinManifacturer.equals(otherManifacturer));
+        //noinspection ObjectEqualsNull
+        Assert.assertFalse(thisTwinManifacturer.equals(null));
+        //noinspection EqualsBetweenInconvertibleTypes
+        Assert.assertFalse(thisTwinManifacturer.equals(Fixtures.MANIFACTURER_NAME)); // it should not equal another class type
     }
 
     @Test
