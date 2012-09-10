@@ -17,7 +17,7 @@ import java.util.Properties;
 /**
  * @since 08-09-2012 10:37
  */
-public class OpenPrintingScraper {
+public final class OpenPrintingScraper {
 
     private final String LPS_URL;
     private static final String MANIFACTURER_SELECTOR = "select#showby_manufacturer > option";

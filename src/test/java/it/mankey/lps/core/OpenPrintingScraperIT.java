@@ -1,6 +1,7 @@
 package it.mankey.lps.core;
 
 import it.mankey.lps.TestConstants;
+import it.mankey.lps.domain.Fixtures;
 import it.mankey.lps.domain.Manifacturer;
 import it.mankey.lps.domain.Printer;
 import org.junit.Assert;
@@ -24,6 +25,7 @@ public class OpenPrintingScraperIT {
     public void scraperShouldFindManifacturers() throws IOException {
         final List<Manifacturer> manifacturers = openPrintingScraper.getManifacturers();
         Assert.assertTrue(!manifacturers.isEmpty());
+        Assert.assertTrue(manifacturers.containsAll(Fixtures.WELL_KNOWN_MANIFACTURERS));
     }
 
     @Test

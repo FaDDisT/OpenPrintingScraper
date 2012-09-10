@@ -20,7 +20,7 @@ import static it.mankey.lps.core.PriceScannerHelper.buildQueryString;
 /**
  * @since 08-09-2012 20:40
  */
-public class PriceScanner {
+public final class PriceScanner {
 
     public static final String SHOPPING_SEARCH_V1_PUBLIC_PRODUCTS_PATH = "/shopping/search/v1/public/products";
     public static final int INVENTORY_INDEX = 0;

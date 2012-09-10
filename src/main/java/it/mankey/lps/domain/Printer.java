@@ -3,7 +3,7 @@ package it.mankey.lps.domain;
 /**
  * @since 08-09-2012 20:12
  */
-public class Printer {
+public final class Printer {
     public final String model;
     public final Manifacturer manifacturer;
 
@@ -22,5 +22,33 @@ public class Printer {
                 manifacturer +
                 ", model='" + model + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        final Printer printer = (Printer) o;
+
+        if (manifacturer != null ? !manifacturer.equals(printer.manifacturer) : printer.manifacturer != null) {
+            return false;
+        }
+        if (model != null ? !model.equals(printer.model) : printer.model != null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = model != null ? model.hashCode() : 0;
+        result = 31 * result + (manifacturer != null ? manifacturer.hashCode() : 0);
+        return result;
     }
 }
