@@ -1,15 +1,11 @@
 package it.mankey.openprintingscraper.domain;
 
-import it.mankey.openprintingscraper.util.JacksonObjectMapper;
-
-import java.io.IOException;
-
 import static org.apache.commons.lang.StringUtils.isBlank;
 
 /**
  * @since 08-09-2012 10:10
  */
-public final class Manifacturer {
+public final class Manifacturer extends AbstractDomainClass {
     private final String name;
 
     private Manifacturer(final String name) {
@@ -25,16 +21,6 @@ public final class Manifacturer {
 
     public static boolean canCreate(final String name) {
         return !isBlank(name);
-    }
-
-    @Override
-    public String toString() {
-        try {
-            return JacksonObjectMapper.getInstance().writeValueAsString(this);
-        }
-        catch (IOException e) {
-            return e.toString();
-        }
     }
 
     @Override

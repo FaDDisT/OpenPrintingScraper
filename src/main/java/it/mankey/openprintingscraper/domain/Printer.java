@@ -3,7 +3,7 @@ package it.mankey.openprintingscraper.domain;
 /**
  * @since 08-09-2012 20:12
  */
-public final class Printer {
+public final class Printer extends AbstractDomainClass {
     private final String model;
     private final Manifacturer manifacturer;
     private static final int PRIME_NUMBER = 31;
@@ -15,14 +15,6 @@ public final class Printer {
 
     public static Printer create(final Manifacturer manifacturer, final String model) {
         return new Printer(manifacturer, model);
-    }
-
-    @Override
-    public String toString() {
-        return "Printer{" +
-                manifacturer +
-                ", model='" + model + '\'' +
-                '}';
     }
 
     @Override
