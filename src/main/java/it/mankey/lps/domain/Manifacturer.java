@@ -1,5 +1,9 @@
 package it.mankey.lps.domain;
 
+import it.mankey.lps.util.JacksonObjectMaper;
+
+import java.io.IOException;
+
 import static org.apache.commons.lang.StringUtils.isBlank;
 
 /**
@@ -25,9 +29,12 @@ public final class Manifacturer {
 
     @Override
     public String toString() {
-        return "Manifacturer{" +
-                "name='" + name + '\'' +
-                '}';
+        try {
+            return JacksonObjectMaper.instance.writeValueAsString(this);
+        }
+        catch (IOException e) {
+            return e.toString();
+        }
     }
 
     @Override

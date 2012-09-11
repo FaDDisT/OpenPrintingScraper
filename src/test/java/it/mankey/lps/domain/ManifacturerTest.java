@@ -1,5 +1,6 @@
 package it.mankey.lps.domain;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -57,5 +58,13 @@ public class ManifacturerTest {
         final Manifacturer thisManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
         final Manifacturer thatManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
         Assert.assertEquals(thisManifacturer.hashCode(), thatManifacturer.hashCode());
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        final Manifacturer thisManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
+        final String manifacturer = thisManifacturer.toString();
+        Assert.assertFalse(StringUtils.isBlank(manifacturer));
+        Assert.assertTrue(manifacturer.charAt(0) == '{');
     }
 }
