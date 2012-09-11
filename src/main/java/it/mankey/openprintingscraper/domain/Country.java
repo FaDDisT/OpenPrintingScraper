@@ -1,4 +1,4 @@
-package it.mankey.lps.domain;
+package it.mankey.openprintingscraper.domain;
 
 /**
  * @since 08-09-2012 22:06

@@ -1,10 +1,10 @@
-package it.mankey.lps.core;
+package it.mankey.openprintingscraper.core;
 
-import it.mankey.lps.TestConstants;
-import it.mankey.lps.domain.Country;
-import it.mankey.lps.domain.Manifacturer;
-import it.mankey.lps.domain.Printer;
-import it.mankey.lps.domain.Quote;
+import it.mankey.openprintingscraper.TestConstants;
+import it.mankey.openprintingscraper.domain.Country;
+import it.mankey.openprintingscraper.domain.Manifacturer;
+import it.mankey.openprintingscraper.domain.Printer;
+import it.mankey.openprintingscraper.domain.Quote;
 import org.junit.Assert;
 import org.junit.Test;
 

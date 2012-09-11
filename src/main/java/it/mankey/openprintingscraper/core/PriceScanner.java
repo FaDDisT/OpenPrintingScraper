@@ -1,12 +1,12 @@
-package it.mankey.lps.core;
+package it.mankey.openprintingscraper.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import it.mankey.lps.domain.Country;
-import it.mankey.lps.domain.Printer;
-import it.mankey.lps.domain.Quote;
-import it.mankey.lps.util.CollectionUtils;
-import it.mankey.lps.util.Mapper;
+import it.mankey.openprintingscraper.domain.Country;
+import it.mankey.openprintingscraper.domain.Printer;
+import it.mankey.openprintingscraper.domain.Quote;
+import it.mankey.openprintingscraper.util.CollectionUtils;
+import it.mankey.openprintingscraper.util.Mapper;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 
-import static it.mankey.lps.core.PriceScannerHelper.buildQueryString;
+import static it.mankey.openprintingscraper.core.PriceScannerHelper.buildQueryString;
 
 /**
  * @since 08-09-2012 20:40

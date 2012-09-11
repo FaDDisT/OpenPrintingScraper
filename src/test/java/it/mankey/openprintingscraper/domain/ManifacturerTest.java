@@ -1,4 +1,4 @@
-package it.mankey.lps.domain;
+package it.mankey.openprintingscraper.domain;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;

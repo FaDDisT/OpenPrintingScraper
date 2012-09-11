@@ -1,6 +1,6 @@
-package it.mankey.lps.domain;
+package it.mankey.openprintingscraper.domain;
 
-import it.mankey.lps.util.JacksonObjectMaper;
+import it.mankey.openprintingscraper.util.JacksonObjectMaper;
 
 import java.io.IOException;
 

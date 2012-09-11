@@ -1,4 +1,4 @@
-package it.mankey.lps.util;
+package it.mankey.openprintingscraper.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

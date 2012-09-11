@@ -1,10 +1,10 @@
-package it.mankey.lps.core;
+package it.mankey.openprintingscraper.core;
 
-import it.mankey.lps.domain.Country;
-import it.mankey.lps.domain.Printer;
+import it.mankey.openprintingscraper.domain.Country;
+import it.mankey.openprintingscraper.domain.Printer;
 import org.apache.commons.httpclient.NameValuePair;
 
-import static it.mankey.lps.util.CollectionUtils.array;
+import static it.mankey.openprintingscraper.util.CollectionUtils.array;
 import static org.apache.commons.lang.StringUtils.join;
 
 final class PriceScannerHelper {

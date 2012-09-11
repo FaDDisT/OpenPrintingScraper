@@ -1,4 +1,4 @@
-package it.mankey.lps.domain;
+package it.mankey.openprintingscraper.domain;
 
 import java.math.BigDecimal;
 

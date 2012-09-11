@@ -1,9 +1,9 @@
-package it.mankey.lps.core;
+package it.mankey.openprintingscraper.core;
 
-import it.mankey.lps.domain.Manifacturer;
-import it.mankey.lps.domain.Printer;
-import it.mankey.lps.util.CollectionUtils;
-import it.mankey.lps.util.Mapper;
+import it.mankey.openprintingscraper.domain.Manifacturer;
+import it.mankey.openprintingscraper.domain.Printer;
+import it.mankey.openprintingscraper.util.CollectionUtils;
+import it.mankey.openprintingscraper.util.Mapper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

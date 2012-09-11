@@ -1,4 +1,4 @@
-package it.mankey.lps.util;
+package it.mankey.openprintingscraper.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;

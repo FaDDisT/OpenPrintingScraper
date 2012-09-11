@@ -1,4 +1,4 @@
-package it.mankey.lps.util;
+package it.mankey.openprintingscraper.util;
 
 /**
  * @param <E> Collection element class
