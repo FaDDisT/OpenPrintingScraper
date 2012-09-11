@@ -1,6 +1,6 @@
 package it.mankey.openprintingscraper.domain;
 
-import it.mankey.openprintingscraper.util.JacksonObjectMaper;
+import it.mankey.openprintingscraper.util.JacksonObjectMapper;
 
 import java.io.IOException;
 
@@ -30,7 +30,7 @@ public final class Manifacturer {
     @Override
     public String toString() {
         try {
-            return JacksonObjectMaper.instance.writeValueAsString(this);
+            return JacksonObjectMapper.getInstance().writeValueAsString(this);
         }
         catch (IOException e) {
             return e.toString();
