@@ -1,5 +1,6 @@
 package it.mankey.openprintingscraper.domain;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,4 +24,6 @@ public class Fixtures {
             Manifacturer.create("Xerox")
     );
     public static final String PRINTER_MODEL = "Color Laser Printer 2000";
+
+    public static final BigDecimal A_QUOTE_PRICE = BigDecimal.ONE;
 }

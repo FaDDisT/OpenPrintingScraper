@@ -65,6 +65,6 @@ public class ManifacturerTest {
         final Manifacturer thisManifacturer = Manifacturer.create(Fixtures.MANIFACTURER_NAME);
         final String manifacturer = thisManifacturer.toString();
         Assert.assertFalse(StringUtils.isBlank(manifacturer));
-        Assert.assertTrue(manifacturer.charAt(0) == '{');
+        TestUtils.isValidJson(manifacturer);
     }
 }

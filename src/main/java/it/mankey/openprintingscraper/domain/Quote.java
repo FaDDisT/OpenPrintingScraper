@@ -13,7 +13,14 @@ public final class Quote extends AbstractDomainClass {
         this.price = price;
     }
 
+    public static boolean canCreate(final BigDecimal price) {
+        return price != null;
+    }
+
     public static Quote create(final BigDecimal price) {
+        if (!canCreate(price)) {
+            throw new IllegalArgumentException("Price can't be null");
+        }
         return new Quote(price);
     }
 
