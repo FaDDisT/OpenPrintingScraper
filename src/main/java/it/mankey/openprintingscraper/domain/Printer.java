@@ -1,5 +1,7 @@
 package it.mankey.openprintingscraper.domain;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * @since 08-09-2012 20:12
  */
@@ -13,7 +15,14 @@ public final class Printer extends AbstractDomainClass {
         this.model = model;
     }
 
+    public static boolean canCreate(final Manifacturer manifacturer, final String model) {
+        return (manifacturer != null) && !StringUtils.isBlank(model);
+    }
+
     public static Printer create(final Manifacturer manifacturer, final String model) {
+        if (!canCreate(manifacturer, model)) {
+            throw new IllegalArgumentException("Invalid parameters. Manifacturer can't be null and model can't be empty");
+        }
         return new Printer(manifacturer, model);
     }
 

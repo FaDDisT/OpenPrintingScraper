@@ -12,6 +12,9 @@ public class Fixtures {
 
     public static final String MANIFACTURER_NAME = "Printer Manifacturer";
 
+    public static final Manifacturer WELL_KNOWN_MANIFACTURER_A = Manifacturer.create("Canon");
+    public static final Manifacturer WELL_KNOWN_MANIFACTURER_B = Manifacturer.create("Epson");
+
     public static final List<Manifacturer> WELL_KNOWN_MANIFACTURERS = Arrays.asList(
             Manifacturer.create("Canon"),
             Manifacturer.create("Dell"),
@@ -23,6 +26,7 @@ public class Fixtures {
             Manifacturer.create("Samsung"),
             Manifacturer.create("Xerox")
     );
+
     public static final String PRINTER_MODEL = "Color Laser Printer 2000";
 
     public static final BigDecimal A_QUOTE_PRICE = BigDecimal.ONE;
