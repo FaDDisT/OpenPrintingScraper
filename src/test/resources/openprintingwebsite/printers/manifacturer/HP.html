@@ -1,0 +1,2605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <title>Printers by Manufacturer | OpenPrinting - The Linux Foundation</title>
+    <link rel="shortcut icon" href="/images/layout/favicon.png" type="image/x-icon"/>
+
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/stylesheets/ajax.css" rel="stylesheet" type="text/css"/>
+
+    <script src="/javascript/jquery-1.3.2.js" type="text/javascript" charset="utf-8"></script>
+    <link type="text/css" href="/javascript/themes/cupertino/jquery-ui-1.7.2.custom.css" rel="stylesheet"/>
+    <script src="/javascript/ui/jquery-ui-1.7.2.custom.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="/javascript/jquery.chainedSelects.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/ajax.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="/javascript/swfobject.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/menu.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/javascript/ui/ui.datepicker.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat:'yy-mm-dd' });
+        });
+    </script>
+
+
+    <script type="text/javascript" src="/javascript/jquery.highlightFade.js"></script>
+
+
+    <script type="text/javascript">
+        function addFormField(drselect) {
+            var id = document.getElementById("id").value;
+            var str = drselect;
+            str.replace("###", id);
+            $("#divTxt").append("<p id='row" + id + "'><label for='dnameNew" + id + "'>Driver:&nbsp;&nbsp;</label>" + str + "<input type='text' size='20' name='dnameNew[]' id='dnameNew" + id + "' />&nbsp;&nbsp;<a href='#' onClick='removeFormField(\"#row" + id + "\"); return false;'>Remove</a><br><label for='dcommentNew" + id + "'>Comment:&nbsp;&nbsp;</label><textarea cols='20' rows='4' name='dcommentNew[]' id='dcommentNew" + id + "'></textarea><br><label for='dppdNew" + id + "'>PPD file URL:&nbsp;&nbsp;</label><input type='text' size='20' name='dppdNew[]' id='dppdNew" + id + "' /><br><label for='recommendedDriver" + id + "'>Recommended Driver:&nbsp;&nbsp;</label><input type='radio' name='recommendedRadio[]' id='recommendedRadio" + id + "' value='1' onclick='addValue(\"#recommendedDriver" + id + "\");' ><input type='hidden' name='recommendedDriver[]' id='recommendedDriver" + id + "' value='0'></p>");
+
+
+            $('#row' + id).highlightFade({
+                speed:1000
+            });
+
+            id = (id - 1) + 2;
+            document.getElementById("id").value = id;
+        }
+
+        function removeFormField(id) {
+            $(id).remove();
+        }
+
+        function addValue(id) {
+
+            $("input[name^='recommendedDriver']").val("0");
+            $("" + id + "").val('1');
+            //alert(id + " " + $(""+id+"").val());
+
+        }
+        function subtrValue() {
+            //$(""+id+"").val('0');
+            // $("input").find("span").css('color','red');
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+<div id="loading">Loading ...</div>
+
+<div id="page">
+<div id="page-inner">
+<div id="page-header" class="clearfix">
+    <div id="util-nav">
+        <div id="lf-link">
+            <a title="Linux Foundation - US" href="http://www.linuxfoundation.org">
+                <img src="/images/icons/flag_us.gif" alt="Linux Foundation - US" title=""/>
+            </a>
+            <a title="Linux Foundation - Japan" href="http://www.linuxfoundation.jp">
+                <img src="/images/icons/flag_jp.gif" alt="Linux Foundation - Japan" title=""/>
+            </a>
+            <a href="http://www.linuxfoundation.org">LinuxFoundation.org</a>
+        </div>
+        <ul id="lf-more-contain">
+            <li><a href="http://www.linux.com">Linux.com</a></li>
+            <li><a href="http://events.linuxfoundation.org">Events</a></li>
+            <li><a href="http://video.linuxfoundation.org">Video</a></li>
+            <li><a onmouseout="delayhidemenu()" onclick="return dropdownmenu(this, event, menu2, '100px')" id="lf-more" href="#">More</a></li>
+        </ul>
+        <ul id="user-nav">
+            <li><a class="list-link login" href="/login">Login</a></li>
+            <li><a class="list-link signup" href="https://www.linuxfoundation.org/user/register?destination=home">Register</a></li>
+        </ul>
+    </div>
+
+    <div id="site-logo">
+        <a href="/"></a>
+    </div>
+
+    <div id="lf-logo">
+        <a href="http://www.linuxfoundation.org"></a>
+    </div>
+</div>
+
+<div id="navbar">
+    <div id="primary-nav">
+        <ul>
+            <li><a href="http://www.linuxfoundation.org/" id="activetab" title="Home"><span>Home</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/about" title="About Us"><span>About Us</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/news-media" title="News &amp; Media"><span>News &amp; Media</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/programs" title="Programs"><span>Programs</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate" title="Collaborate"><span>Collaborate</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/participate" title="Participate"><span>Participate</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/events" title="Events"><span>Events</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/linux-training" title="Training"><span>Training</span></a></li>
+        </ul>
+    </div>
+
+    <div id="sub-nav">
+        <ul>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/" title="OpenPrinting"><span>OpenPrinting</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/databaseintro" title="Database"><span>Database</span></a></li>
+            <li class="active"><a href="/printers" title="Printers"><span>Printers</span></a></li>
+            <li><a href="/drivers" title="Drivers"><span>Drivers</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/indexfaq" title="FAQ"><span>FAQ</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/foomatic" title="Foomatic"><span>Foomatic</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/articles" title="Articles"><span>Articles</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/projects" title="Projects"><span>Projects</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/database/documentation" title="Documentation"><span>Documentation</span></a></li>
+            <li><a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/development" title="Developers"><span>Developers</span></a></li>
+        </ul>
+        <div style="clear: both"></div>
+    </div>
+
+</div>
+
+<div id="content">
+
+<div id="two_col_col_1">
+<p class="breadcrumb">
+    <a href="http://www.linuxfoundation.org">The Linux Foundation</a>
+    <a href="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/">OpenPrinting</a>
+    <a href="/printers/">Printers</a>
+    HP
+</p>
+
+<h1>HP</h1>
+
+<p><sup>*</sup>: User-contributed printer entry which is not yet
+    verified and/or proofread. The printer entry is not included in the
+    <a href="http://www.openprinting.org/foomatic.html">Foomatic</a>
+    packages yet.</p>
+
+<br>
+
+
+<h3 style="border-bottom:1px solid #eee;"><font color="green">Perfectly</font> <img src="/images/icons/Linuxyes.png"><img src="/images/icons/Linuxyes.png"><img
+        src="/images/icons/Linuxyes.png"></h3>
+
+
+<a href="/printer/HP/HP-2000C">2000C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-2500C">2500C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-2500CM">2500CM</a>
+<br/>
+
+
+<a href="/printer/HP/HP-2563">2563</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_1000">Business Inkjet 1000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_1100">Business Inkjet 1100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_1200">Business Inkjet 1200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2200">Business Inkjet 2200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2230">Business Inkjet 2230</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2250">Business Inkjet 2250</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2250TN">Business Inkjet 2250TN</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2280">Business Inkjet 2280</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2300">Business Inkjet 2300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2600">Business Inkjet 2600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_2800">Business Inkjet 2800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Business_Inkjet_3000">Business Inkjet 3000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-CM8050_Color_MFP">CM8050 Color MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-CM8050_MFP_with_Edgeline">CM8050 MFP with Edgeline</a>
+<br/>
+
+
+<a href="/printer/HP/HP-CM8060_Color_MFP">CM8060 Color MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-CM8060_MFP_with_Edgeline">CM8060 MFP with Edgeline</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_Inkjet_Printer_CP1160">Color Inkjet Printer CP1160</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_Inkjet_Printer_CP1700">Color Inkjet Printer CP1700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet">Color LaserJet</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2500">Color LaserJet 2500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2550">Color LaserJet 2550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2605">Color LaserJet 2605</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2605dn">Color LaserJet 2605dn</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2700">Color LaserJet 2700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_2800">Color LaserJet 2800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_3000">Color LaserJet 3000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_3700">Color LaserJet 3700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_3800">Color LaserJet 3800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4500">Color LaserJet 4500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4550">Color LaserJet 4550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4600">Color LaserJet 4600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4610">Color LaserJet 4610</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4650">Color LaserJet 4650</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4700">Color LaserJet 4700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_4730_MFP">Color LaserJet 4730 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_5">Color LaserJet 5</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_5000">Color LaserJet 5000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_5500">Color LaserJet 5500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_5550">Color LaserJet 5550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_5M">Color LaserJet 5M</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_8500">Color LaserJet 8500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_8550">Color LaserJet 8550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_9500">Color LaserJet 9500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_9500_MFP">Color LaserJet 9500 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CM1015">Color LaserJet CM1015</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CM1017">Color LaserJet CM1017</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CM4730_MFP">Color LaserJet CM4730 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_Laserjet_CP1515n">Color Laserjet CP1515n</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CP2025dn">Color LaserJet CP2025dn</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CP3505">Color LaserJet CP3505</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_CP4005">Color LaserJet CP4005</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Colorsmart_C6380">Colorsmart C6380</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-CP3525n">CP3525n</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_1050C">DesignJet 1050C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_1055CM">DesignJet 1055CM</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_230">DesignJet 230</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_2500CP">DesignJet 2500CP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_3500CP">DesignJet 3500CP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_430">DesignJet 430</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_5000PS">DesignJet 5000PS</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_5500ps">DesignJet 5500ps</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_700">DesignJet 700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_800PS">DesignJet 800PS</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DesignJet_ColorPro_CAD">DesignJet ColorPro CAD</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet">DeskJet</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1000C">DeskJet 1000C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1100C">DeskJet 1100C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1120C">DeskJet 1120C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1125C">DeskJet 1125C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1200C">DeskJet 1200C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1220C">DeskJet 1220C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1280">DeskJet 1280</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1600C">DeskJet 1600C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_1600CM">DeskJet 1600CM</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_200">DeskJet 200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Deskjet_3050_J610">Deskjet 3050 J610</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_310">DeskJet 310</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_320">DeskJet 320</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_340C">DeskJet 340C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_3810">DeskJet 3810</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_3816">DeskJet 3816</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_3820">DeskJet 3820</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_3822">DeskJet 3822</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_400">DeskJet 400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_450">DeskJet 450</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_460">DeskJet 460</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_500">DeskJet 500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_500C">DeskJet 500C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_505J_Plus">DeskJet 505J Plus</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_510">DeskJet 510</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5150">DeskJet 5150</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5158">DeskJet 5158</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5160">DeskJet 5160</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_540">DeskJet 540</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_540C">DeskJet 540C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5440">DeskJet 5440</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_550C">DeskJet 550C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5550">DeskJet 5550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5551">DeskJet 5551</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5650">DeskJet 5650</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5652">DeskJet 5652</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5670">DeskJet 5670</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5740">DeskJet 5740</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5850">DeskJet 5850</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_5940">DeskJet 5940</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_600">DeskJet 600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_610C">DeskJet 610C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_610CL">DeskJet 610CL</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6122">DeskJet 6122</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6127">DeskJet 6127</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_612C">DeskJet 612C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_630C">DeskJet 630C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_632C">DeskJet 632C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_640C">DeskJet 640C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_648C">DeskJet 648C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6520">DeskJet 6520</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6540">DeskJet 6540</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_656C">DeskJet 656C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6600">DeskJet 6600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_660C">DeskJet 660C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_670C">DeskJet 670C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_670TV">DeskJet 670TV</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_672C">DeskJet 672C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6800">DeskJet 6800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_680C">DeskJet 680C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_682C">DeskJet 682C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6840">DeskJet 6840</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_690C">DeskJet 690C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_692C">DeskJet 692C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_693C">DeskJet 693C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6940">DeskJet 6940</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_694C">DeskJet 694C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_695C">DeskJet 695C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_697C">DeskJet 697C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_6980">DeskJet 6980</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_710C">DeskJet 710C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_712C">DeskJet 712C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_720C">DeskJet 720C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_722C">DeskJet 722C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_810C">DeskJet 810C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_812C">DeskJet 812C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_815C">DeskJet 815C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_816C">DeskJet 816C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_820C">DeskJet 820C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_825C">DeskJet 825C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_830C">DeskJet 830C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_832C">DeskJet 832C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_840C">DeskJet 840C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_841C">DeskJet 841C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_842C">DeskJet 842C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_843C">DeskJet 843C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_845C">DeskJet 845C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_850C">DeskJet 850C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_855C">DeskJet 855C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_870C">DeskJet 870C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_880C">DeskJet 880C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_882C">DeskJet 882C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_890C">DeskJet 890C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_895C">DeskJet 895C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_916C">DeskJet 916C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_920C">DeskJet 920C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_9300">DeskJet 9300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_930C">DeskJet 930C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_932C">DeskJet 932C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_933C">DeskJet 933C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_934C">DeskJet 934C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_935C">DeskJet 935C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_940C">DeskJet 940C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_948C">DeskJet 948C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_950C">DeskJet 950C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_952C">DeskJet 952C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_955C">DeskJet 955C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_957C">DeskJet 957C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_959C">DeskJet 959C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_9600">DeskJet 9600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_960C">DeskJet 960C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_970C">DeskJet 970C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_975C">DeskJet 975C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_9800">DeskJet 9800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_980C">DeskJet 980C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_990C">DeskJet 990C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_995C">DeskJet 995C</a>
+<br/>
+
+
+<a href="/printer/HP/HP-deskjet_f340">deskjet f340</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-Deskjet_Ink_Advantage_2060_K110">Deskjet Ink Advantage 2060 (K110)</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_Plus">DeskJet Plus</a>
+<br/>
+
+
+<a href="/printer/HP/HP-DeskJet_Portable">DeskJet Portable</a>
+<br/>
+
+
+<a href="/printer/HP/HP-e-printer_e20">e-printer e20</a>
+<br/>
+
+
+<a href="/printer/HP/HP-HP_Color_Laserjet_CP2025dn">HP Color Laserjet CP2025dn</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-HP_LaserJet_Professional_M1132_MFP">HP LaserJet Professional M1132 MFP</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-j_3680">j 3680</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet">LaserJet</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1022">LaserJet 1022</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1022n">LaserJet 1022n</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1022nw">LaserJet 1022nw</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1100">LaserJet 1100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1100A">LaserJet 1100A</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1160">LaserJet 1160</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1200">LaserJet 1200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_1220">LaserJet 1220</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2">LaserJet 2</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2_w_PS">LaserJet 2 w/PS</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2100">LaserJet 2100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2100M">LaserJet 2100M</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2200">LaserJet 2200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2300">LaserJet 2300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2300L">LaserJet 2300L</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2410">LaserJet 2410</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2420">LaserJet 2420</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2430">LaserJet 2430</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2P">LaserJet 2P</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_2P_Plus">LaserJet 2P Plus</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3">LaserJet 3</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3050">LaserJet 3050</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3052">LaserJet 3052</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3055">LaserJet 3055</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3300_MFP">LaserJet 3300 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3310_MFP">LaserJet 3310 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3320_MFP">LaserJet 3320 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3320N_MFP">LaserJet 3320N MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3390">LaserJet 3390</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3392">LaserJet 3392</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3D">LaserJet 3D</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3P_w_PCL5">LaserJet 3P w/ PCL5</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_3P_w_PS">LaserJet 3P w/PS</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4">LaserJet 4</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4_Plus">LaserJet 4 Plus</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4000">LaserJet 4000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4050">LaserJet 4050</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4100">LaserJet 4100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4100_MFP">LaserJet 4100 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4200">LaserJet 4200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4240">LaserJet 4240</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4250">LaserJet 4250</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4300">LaserJet 4300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4345_MFP">LaserJet 4345 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4350">LaserJet 4350</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4L">LaserJet 4L</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4M">LaserJet 4M</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4ML">LaserJet 4ML</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4MP">LaserJet 4MP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4P">LaserJet 4P</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4Si">LaserJet 4Si</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4V">LaserJet 4V</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_4V_4LJ_Pro">LaserJet 4V/4LJ Pro</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5">LaserJet 5</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5000">LaserJet 5000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5100">LaserJet 5100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5200">LaserJet 5200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5200L">LaserJet 5200L</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5L">LaserJet 5L</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5M">LaserJet 5M</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5MP">LaserJet 5MP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5P">LaserJet 5P</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5Si">LaserJet 5Si</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_5Si_Mopier">LaserJet 5Si Mopier</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_6">LaserJet 6</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_6L">LaserJet 6L</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_6MP">LaserJet 6MP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_6P">LaserJet 6P</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_8000">LaserJet 8000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_8100">LaserJet 8100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_8150">LaserJet 8150</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9000">LaserJet 9000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9000_MFP">LaserJet 9000 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9040">LaserJet 9040</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9040_MFP">LaserJet 9040 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9050">LaserJet 9050</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9050_MFP">LaserJet 9050 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9055_MFP">LaserJet 9055 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_9065_MFP">LaserJet 9065 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M2727">LaserJet M2727</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M3027_MFP">LaserJet M3027 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M3035_MFP">LaserJet M3035 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M4345_MFP">LaserJet M4345 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M5025_MFP">LaserJet M5025 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_M5035_MFP">LaserJet M5035 MFP</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P2010">LaserJet P2010</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P2015">LaserJet P2015</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P2055d">LaserJet P2055d</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P2055dn">LaserJet P2055dn</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P3004">LaserJet P3004</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P3005">LaserJet P3005</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P4014">LaserJet P4014</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_P4015">LaserJet P4015</a>
+<br/>
+
+
+<a href="/printer/HP/HP-LaserJet_Plus">LaserJet Plus</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Mopier_240">Mopier 240</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Mopier_320">Mopier 320</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Officejet_4500_Wireless_g510n-z">Officejet 4500 Wireless g510n-z</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_6500_Wireless">OfficeJet 6500 Wireless</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_9100">OfficeJet 9100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_J5700">OfficeJet J5700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_K7100">OfficeJet K7100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Officejet_Pro_8500_A910">Officejet Pro 8500 A910</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-Officejet_Pro_8500_Premier">Officejet Pro 8500 Premier</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_K5300">OfficeJet Pro K5300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_K5400">OfficeJet Pro K5400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_K550">OfficeJet Pro K550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_K850">OfficeJet Pro K850</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_K8600">OfficeJet Pro K8600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_L7300">OfficeJet Pro L7300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_L7500">OfficeJet Pro L7500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_L7600">OfficeJet Pro L7600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-OfficeJet_Pro_L7700">OfficeJet Pro L7700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Officejet-4500-G510n-z">Officejet-4500-G510n-z</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-PaintJet">PaintJet</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PaintJet_XL">PaintJet XL</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PaintJet_XL300">PaintJet XL300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_140">PhotoSmart 140</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_240">PhotoSmart 240</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_2570">PhotoSmart 2570</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_2600">PhotoSmart 2600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_2700">PhotoSmart 2700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_3100">PhotoSmart 3100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_320">PhotoSmart 320</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_3200">PhotoSmart 3200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_330">PhotoSmart 330</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_3300">PhotoSmart 3300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_370">PhotoSmart 370</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_380">PhotoSmart 380</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_420">PhotoSmart 420</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_470">PhotoSmart 470</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7150">PhotoSmart 7150</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7260">PhotoSmart 7260</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7268">PhotoSmart 7268</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7345">PhotoSmart 7345</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7350">PhotoSmart 7350</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7400">PhotoSmart 7400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7550">PhotoSmart 7550</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7660">PhotoSmart 7660</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7760">PhotoSmart 7760</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7800">PhotoSmart 7800</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_7960">PhotoSmart 7960</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_8000">PhotoSmart 8000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_8100">PhotoSmart 8100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_8200">PhotoSmart 8200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_8400">PhotoSmart 8400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_8700">PhotoSmart 8700</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A310">PhotoSmart A310</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A320">PhotoSmart A320</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A430">PhotoSmart A430</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A440">PhotoSmart A440</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A510">PhotoSmart A510</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A520">PhotoSmart A520</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A610">PhotoSmart A610</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A620">PhotoSmart A620</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A710">PhotoSmart A710</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_A820">PhotoSmart A820</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_B109">PhotoSmart B109</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-Photosmart_C309g">Photosmart C309g</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C3100">PhotoSmart C3100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Photosmart_C310a">Photosmart C310a</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C4100">PhotoSmart C4100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C4200">PhotoSmart C4200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C4380">PhotoSmart C4380</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C4480">PhotoSmart C4480</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-Photosmart_C4680">Photosmart C4680</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C5100">PhotoSmart C5100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C5200">PhotoSmart C5200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C6100">PhotoSmart C6100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C6200">PhotoSmart C6200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Photosmart_C6380">Photosmart C6380</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C7100">PhotoSmart C7100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C7200">PhotoSmart C7200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_C8100">PhotoSmart C8100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D5060">PhotoSmart D5060</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D5100">PhotoSmart D5100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D5300">PhotoSmart D5300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-Photosmart_D5460">Photosmart D5460</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D6100">PhotoSmart D6100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D7100">PhotoSmart D7100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D7200">PhotoSmart D7200</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D7300">PhotoSmart D7300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_D7400">PhotoSmart D7400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P100">PhotoSmart P100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1000">PhotoSmart P1000</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1100">PhotoSmart P1100</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1115">PhotoSmart P1115</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1215">PhotoSmart P1215</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1218">PhotoSmart P1218</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P130">PhotoSmart P130</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P1315">PhotoSmart P1315</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_P230">PhotoSmart P230</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PhotoSmart_Pro_B8300">PhotoSmart Pro B8300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_1500">PSC 1500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_1510">PSC 1510</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_1600">PSC 1600</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2110">PSC 2110</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2150">PSC 2150</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2170">PSC 2170</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2175">PSC 2175</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2210">PSC 2210</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2300">PSC 2300</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2350">PSC 2350</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2400">PSC 2400</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_2500">PSC 2500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_370">PSC 370</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_380">PSC 380</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_500">PSC 500</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_750">PSC 750</a>
+<br/>
+
+
+<a href="/printer/HP/HP-PSC_750xi">PSC 750xi</a>
+<br/>
+
+
+<a href="/printer/HP/HP-psc2105">psc2105</a>
+<sup>*</sup>
+<br/>
+
+
+<a href="/printer/HP/HP-psc2175">psc2175</a>
+<sup>*</sup>
+<br/>
+
+
+<h3 style="border-bottom:1px solid #eee;"><font color="green">Mostly</font> <img src="/images/icons/Linuxyes.png"><img src="/images/icons/Linuxyes.png"></h3>
+
+
+<a href="/printer/HP/HP-910">910</a>
+<br/>
+
+<a href="/printer/HP/HP-915">915</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_1600">Color LaserJet 1600</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_2600n">Color LaserJet 2600n</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_3500">Color LaserJet 3500</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_3550">Color LaserJet 3550</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_3600">Color LaserJet 3600</a>
+<br/>
+
+<a href="/printer/HP/HP-Color_LaserJet_CP1215">Color LaserJet CP1215</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_100">DesignJet 100</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_100plus">DesignJet 100plus</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_110">DesignJet 110</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_120">DesignJet 120</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_130">DesignJet 130</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_250C">DesignJet 250C</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_30">DesignJet 30</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_350C">DesignJet 350C</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_450C">DesignJet 450C</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_455CA">DesignJet 455CA</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_488CA">DesignJet 488CA</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_500">DesignJet 500</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_5000">DesignJet 5000</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_500ps">DesignJet 500ps</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_5500">DesignJet 5500</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_650C">DesignJet 650C</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_70">DesignJet 70</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_750">DesignJet 750</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_750C_Plus">DesignJet 750C Plus</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_800">DesignJet 800</a>
+<br/>
+
+<a href="/printer/HP/HP-DesignJet_90">DesignJet 90</a>
+<br/>
+
+<a href="/printer/HP/HP-Deskjet_1050_J410">Deskjet 1050 J410</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3320">DeskJet 3320</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3325">DeskJet 3325</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3420">DeskJet 3420</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3425">DeskJet 3425</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_350C">DeskJet 350C</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3520">DeskJet 3520</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3528">DeskJet 3528</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3535">DeskJet 3535</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3550">DeskJet 3550</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3558">DeskJet 3558</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3650">DeskJet 3650</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3658">DeskJet 3658</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3668">DeskJet 3668</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3740">DeskJet 3740</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3840">DeskJet 3840</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3845">DeskJet 3845</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3920">DeskJet 3920</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_3940">DeskJet 3940</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_420C">DeskJet 420C</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_520">DeskJet 520</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_560C">DeskJet 560C</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D1300">DeskJet D1300</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D1400">DeskJet D1400</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D2300">DeskJet D2300</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D2400">DeskJet D2400</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D4100">DeskJet D4100</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_D4200">DeskJet D4200</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_F2100">DeskJet F2100</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_F300">DeskJet F300</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_F4100">DeskJet F4100</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1000">LaserJet 1000</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1005">LaserJet 1005</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1010">LaserJet 1010</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1012">LaserJet 1012</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1015">LaserJet 1015</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1018">LaserJet 1018</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1020">LaserJet 1020</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1150">LaserJet 1150</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1300">LaserJet 1300</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_1320">LaserJet 1320</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_2D">LaserJet 2D</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3015">LaserJet 3015</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3020">LaserJet 3020</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3030">LaserJet 3030</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3200">LaserJet 3200</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3200m">LaserJet 3200m</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3200se">LaserJet 3200se</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3330_MFP">LaserJet 3330 MFP</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3380">LaserJet 3380</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_M1005_MFP">LaserJet M1005 MFP</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_M1120_MFP">LaserJet M1120 MFP</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P1005">LaserJet P1005</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P1006">LaserJet P1006</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P1007">LaserJet P1007</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P1008">LaserJet P1008</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P1505">LaserJet P1505</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_P2014">LaserJet P2014</a>
+<br/>
+
+<a href="/printer/HP/HP-Laserjet_Pro_CP1025">Laserjet Pro CP1025</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_CP1025nw">LaserJet Pro CP1025nw</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_M1132_MFP">LaserJet Pro M1132 MFP</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_P1102">LaserJet Pro P1102</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_P1102w">LaserJet Pro P1102w</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_P1566">LaserJet Pro P1566</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_Pro_P1606dn">LaserJet Pro P1606dn</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet">OfficeJet</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_300">OfficeJet 300</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_330">OfficeJet 330</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_350">OfficeJet 350</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4100">OfficeJet 4100</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4105">OfficeJet 4105</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4110">OfficeJet 4110</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4115">OfficeJet 4115</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4200">OfficeJet 4200</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_4300">OfficeJet 4300</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_500">OfficeJet 500</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_5105">OfficeJet 5105</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_5110">OfficeJet 5110</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_5110xi">OfficeJet 5110xi</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_520">OfficeJet 520</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_5500">OfficeJet 5500</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_5600">OfficeJet 5600</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_570">OfficeJet 570</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_580">OfficeJet 580</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_590">OfficeJet 590</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_600">OfficeJet 600</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_610">OfficeJet 610</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6100">OfficeJet 6100</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6105">OfficeJet 6105</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6110">OfficeJet 6110</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6150">OfficeJet 6150</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6200">OfficeJet 6200</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_625">OfficeJet 625</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_630">OfficeJet 630</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_6300">OfficeJet 6300</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_635">OfficeJet 635</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_700">OfficeJet 700</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_710">OfficeJet 710</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7100">OfficeJet 7100</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7110">OfficeJet 7110</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7130">OfficeJet 7130</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7140">OfficeJet 7140</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_720">OfficeJet 720</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7200">OfficeJet 7200</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_725">OfficeJet 725</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7300">OfficeJet 7300</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_7400">OfficeJet 7400</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_D125">OfficeJet D125</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_D135">OfficeJet D135</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_D145">OfficeJet D145</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_D155">OfficeJet D155</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_G55">OfficeJet G55</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_G85">OfficeJet G85</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_G95">OfficeJet G95</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_J3600">OfficeJet J3600</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_J5500">OfficeJet J5500</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_K60">OfficeJet K60</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_K60xi">OfficeJet K60xi</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_K80">OfficeJet K80</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_K80xi">OfficeJet K80xi</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_LX">OfficeJet LX</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_Pro_1150C">OfficeJet Pro 1150C</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_Pro_1170C">OfficeJet Pro 1170C</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_Pro_1175C">OfficeJet Pro 1175C</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_R40">OfficeJet R40</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_R45">OfficeJet R45</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_R60">OfficeJet R60</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_R65">OfficeJet R65</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_R80">OfficeJet R80</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_T45">OfficeJet T45</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_T65">OfficeJet T65</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_V40">OfficeJet V40</a>
+<br/>
+
+<a href="/printer/HP/HP-OfficeJet_V40xi">OfficeJet V40xi</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1100">PSC 1100</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1110">PSC 1110</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1200">PSC 1200</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1205">PSC 1205</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1210">PSC 1210</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1300">PSC 1300</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1310">PSC 1310</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_1400">PSC 1400</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_950">PSC 950</a>
+<br/>
+
+<a href="/printer/HP/HP-PSC_950xi">PSC 950xi</a>
+<br/>
+
+
+<h3 style="border-bottom:1px solid #eee;"><font color="orange">Partially</font> <img src="/images/icons/Linuxyes.png"></h3>
+
+
+<a href="/printer/HP/HP-Color_LaserJet_1500">Color LaserJet 1500</a>
+<br/>
+
+<a href="/printer/HP/HP-DeskJet_d1660">DeskJet d1660</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_M1522n_MFP">LaserJet M1522n MFP</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_M1522nf_MFP">LaserJet M1522nf MFP</a>
+<br/>
+
+<a href="/printer/HP/HP-ThinkJet">ThinkJet</a>
+<br/>
+
+
+<h3 style="border-bottom:1px solid #eee;"><font color="red">Paperweight</font> <img src="/images/icons/Linuxno.png"></h3>
+
+
+<a href="/printer/HP/HP-1020">1020</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-72010">72010</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-Deskjet_9650">Deskjet 9650</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-deskjet_F2280">deskjet F2280</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-Deskjet_F4480_series">Deskjet F4480 series </a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-deskjet_F4580">deskjet F4580</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-HP_Deskjet_D2566">HP Deskjet D2566</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-HP_Deskjet_F4480_series">HP Deskjet F4480 series </a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-J4580">J4580</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3100">LaserJet 3100</a>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_3150">LaserJet 3150</a>
+<br/>
+
+<a href="/printer/HP/HP-LASERJET_4_L">LASERJET 4 L</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_CP1025_Color">LaserJet CP1025 Color</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet_M1130_MFP">LaserJet M1130 MFP</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-Laserjet_P1020">Laserjet P1020</a>
+<br/>
+
+<a href="/printer/HP/HP-Laserjet_p1505n">Laserjet p1505n</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-LaserJet6l">LaserJet6l</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-lazerjet_1100">lazerjet 1100</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-Officejet_4500_G510g-m">Officejet 4500 G510g-m</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-officejetj3600">officejetj3600</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-PhotoSmart">PhotoSmart</a>
+<br/>
+
+<a href="/printer/HP/HP-Photosmart_C4280">Photosmart C4280</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-psc_1410">psc 1410</a>
+<sup>*</sup>
+<br/>
+
+<a href="/printer/HP/HP-PSC1400">PSC1400</a>
+<sup>*</sup>
+<br/>
+
+</div>
+<div id="two_col_col_2">
+
+    <form id="search-block-form" method="post" accept-charset="UTF-8" action="http://www.linuxfoundation.org/">
+        <div>
+            <label style="display: none" for="edit-search-block-form-1">Search this site: </label>
+            <input type="text" class="form-text" title="Enter the terms you wish to search for." value="" size="15" id="edit-search-block-form-1" name="search_block_form" maxlength="128"/>
+            <input type="submit" class="form-submit" value="Search" id="edit-submit" name="op"/>
+            <input type="hidden" value="form-26fbc938e83ac4b4c2b953d986702f36" id="form-26fbc938e83ac4b4c2b953d986702f36" name="form_build_id"/>
+            <input type="hidden" value="search_block_form" id="edit-search-block-form" name="form_id"/>
+        </div>
+    </form>
+
+
+    <div class="section">
+        <!--<h4>Resources</h4>
+        <ul class="list_none left halfwidth">
+
+            <li><a class="list-link none" href="#">gravida</a></li>
+            <li><a class="list-link none" href="#">consequat</a></li>
+
+            <li><a class="list-link none" href="#">pellentesque</a></li>
+        </ul>
+        <ul class="list_none left halfwidth">
+
+            <li><a class="list-link none" href="#">gravida</a></li>
+            <li><a class="list-link none" href="#">consequat</a></li>
+            <li><a class="list-link none" href="#">pellentesque</a></li>
+        </ul>-->
+        <div style="border: 1px solid #ccc;">
+            <script type='text/javascript'><!--//<![CDATA[
+            var m3_u = (location.protocol == 'https:' ? 'https://ads.linuxfoundation.org/www/delivery/ajs.php' : 'http://ads.linuxfoundation.org/www/delivery/ajs.php');
+            var m3_r = Math.floor(Math.random() * 99999999999);
+            if (!document.MAX_used) document.MAX_used = ',';
+            document.write("<scr" + "ipt type='text/javascript' src='" + m3_u);
+            document.write("?zoneid=36");
+            document.write('&amp;cb=' + m3_r);
+            if (document.MAX_used != ',') document.write("&amp;exclude=" + document.MAX_used);
+            document.write(document.charset ? '&amp;charset=' + document.charset : (document.characterSet ? '&amp;charset=' + document.characterSet : ''));
+            document.write("&amp;loc=" + escape(window.location));
+            if (document.referrer) document.write("&amp;referer=" + escape(document.referrer));
+            if (document.context) document.write("&context=" + escape(document.context));
+            if (document.mmm_fo) document.write("&amp;mmm_fo=1");
+            document.write("'><\/scr" + "ipt>");
+            //]]>--></script>
+            <noscript><a href='http://ads.linuxfoundation.org/www/delivery/ck.php?n=afa953c1&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img
+                    src='http://ads.linuxfoundation.org/www/delivery/avw.php?zoneid=36&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=afa953c1' border='0' alt=''/></a></noscript>
+        </div>
+        <br>
+    </div>
+
+    <div class="section">
+        <h4>News &amp; announcements
+            <a href="http://forums.freestandards.org/rss.php?21"><img src="/images/icons/rss.png" alt="RSS" title="RSS"/></a>
+        </h4>
+
+        <div class="section">
+        </div>
+
+    </div>
+
+    <div class="section">
+        <h4 class="color_site_1 b_color_site_1">Latest Comments</h4>
+
+        <div>
+
+            <!--<script src='http://www.intensedebate.com/widgets/acctComment/164938/5' defer="defer" type='text/javascript'> </script>-->
+            <div id="recentcomments" class="dsq-widget">
+                <script type="text/javascript" src="http://disqus.com/forums/openprintingorg/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script>
+            </div>
+            <a href="http://disqus.com/">Powered by Disqus</a>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="clearfix"></div>
+</div>
+
+<div id="footer-links" class="clearfix">
+    <div class="section">
+        <div class="foot-div">
+            <h2>Who are we?</h2>
+
+            <p>The Linux Foundation is a non-profit consortium dedicated to fostering the growth of Linux.</p>
+
+            <p><a href="http://www.linuxfoundation.org/about">More on the Foundation...</a></p>
+        </div>
+
+        <div class="foot-div">
+            <h2>Explore</h2>
+            <ul class="list-none">
+                <li><a href="http://www.linuxfoundation.org/search">Search or Browse</a></li>
+                <li><a href="http://www.linuxfoundation.org/">Home</a> / <a href="http://www.linuxfoundation.org/news-media/news">News</a> / <a
+                        href="http://www.linuxfoundation.org/news-media/announcements">Announcements</a></li>
+                <li><a href="http://www.linuxfoundation.org/news-media/blogs">Blogs</a> / <a href="http://www.linuxfoundation.org/collaborate/publications">Publications</a></li>
+                <li><a href="http://www.linuxfoundation.org/events">Events</a> / <a href="http://www.linuxfoundation.org/collaborate/workgroups">Workgroups</a></li>
+                <li><a href="http://www.linuxfoundation.org/about/join">Membership</a> / <a href="http://www.linuxfoundation.org/about/members">Members</a></li>
+            </ul>
+        </div>
+
+        <div class="foot-div">
+            <h2>Stay Current</h2>
+            <ul class="list-none">
+                <li><a href="http://events.linuxfoundation.org">Linux Foundation Events</a></li>
+                <li><a href="http://www.linuxfoundation.org/events/calendar">Linux Foundation Public Calendar</a></li>
+                <li><a href="http://training.linuxfoundation.org">Linux Training</a></li>
+                <li><a href="http://www.linux.com">Linux.com</a></li>
+            </ul>
+        </div>
+
+        <div class="foot-div">
+            <h2>About</h2>
+            <ul class="list-none">
+                <li><a href="http://www.linuxfoundation.org/about/faq">Frequently Asked Questions</a></li>
+                <li><a href="http://www.linuxfoundation.org/about/join">How do I get Involved?</a></li>
+                <li><a href="http://www.linuxfoundation.org/about">About</a> / <a href="http://www.linuxfoundation.org/about/contact">Contact Us</a> / <a
+                        href="http://www.linuxfoundation.org/about/careers">Careers</a></li>
+                <li><a href="http://www.linuxfoundation.org/about/staff">Staff</a> / <a href="http://www.linuxfoundation.org/about/board-members">Board Members</a></li>
+                <li><a href="http://www.linuxfoundation.org/privacy">Privacy Policy</a> / <a href="http://www.linuxfoundation.org/terms">Terms of Use</a> / <a
+                        href="http://www.linuxfoundation.org/about/linux-foundation-trademark-usage-guidelines">Trademarks</a> / <a
+                        href="http://www.linuxfoundation.org/collaborate/workgroups/faq">Workgroups FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- end page-inner -->
+</div>
+<!-- end page -->
+
+<div id="footer">
+    Copyright 2009 Linux Foundation. All rights reserved.<br/>
+    LSB is a trademark of the Linux Foundation. Linux is a registered trademark of Linus Torvalds.<br/>
+    Please see our <a href="http://www.linuxfoundation.org/en/Privacy_Policy">privacy policy</a>.
+</div>
+
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-831873-2");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+
+
+</body>
+</html>
