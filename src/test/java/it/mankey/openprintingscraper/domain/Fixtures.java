@@ -30,4 +30,5 @@ public class Fixtures {
     public static final String PRINTER_MODEL = "Color Laser Printer 2000";
 
     public static final BigDecimal A_QUOTE_PRICE = BigDecimal.ONE;
+    public static final String WELL_KNOWN_BRAND = "HP";
 }

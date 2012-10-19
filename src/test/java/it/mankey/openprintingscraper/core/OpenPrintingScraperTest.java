@@ -1,13 +1,11 @@
 package it.mankey.openprintingscraper.core;
 
 import com.sun.net.httpserver.HttpServer;
-import it.mankey.openprintingscraper.TestConstants;
 import it.mankey.openprintingscraper._testutils.OpenPrintingWebsiteMockHandler;
 import it.mankey.openprintingscraper.domain.Fixtures;
 import it.mankey.openprintingscraper.domain.Manufacturer;
 import it.mankey.openprintingscraper.domain.Printer;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpHost;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -18,17 +16,16 @@ import java.net.InetSocketAddress;
 import java.net.URL;
 import java.util.List;
 
+import static it.mankey.openprintingscraper.TestConstants.*;
+
 /**
  * @since 08-09-2012 09:48
  */
-public class OpenPrintingScraperIT {
+public class OpenPrintingScraperTest {
 
-    public static final int TEST_HTTP_SERVER_PORT = 9888;
     private final OpenPrintingScraper openPrintingScraper;
 
     private static HttpServer testHttpServer;
-    private static final int DELAY_IN_SEC = 30;
-    private static final HttpHost OPEN_PRINTING_TEST_HOST = new HttpHost("localhost", TEST_HTTP_SERVER_PORT);
 
     @BeforeClass
     public static void setupTestHttpServer() throws IOException {
@@ -39,10 +36,10 @@ public class OpenPrintingScraperIT {
 
     @AfterClass
     public static void tearDownTestHttpServer() throws IOException {
-        testHttpServer.stop(DELAY_IN_SEC);
+        testHttpServer.stop(SERVER_SHUTDOWN_TIMELIMIT_IN_SEC);
     }
 
-    public OpenPrintingScraperIT() throws IOException {
+    public OpenPrintingScraperTest() throws IOException {
         openPrintingScraper = OpenPrintingScraper.create(OPEN_PRINTING_TEST_HOST);
     }
 
@@ -56,7 +53,7 @@ public class OpenPrintingScraperIT {
 
     @Test
     public void getPrinterByBrand() throws IOException {
-        final List<Printer> printers = openPrintingScraper.getPrinters(Manufacturer.create(TestConstants.WELL_KNOWN_BRAND));
+        final List<Printer> printers = openPrintingScraper.getPrinters(Manufacturer.create(Fixtures.WELL_KNOWN_BRAND));
         Assert.assertTrue(!printers.isEmpty());
     }
 
