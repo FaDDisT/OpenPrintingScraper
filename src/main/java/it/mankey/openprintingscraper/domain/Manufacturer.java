@@ -5,18 +5,18 @@ import static org.apache.commons.lang.StringUtils.isBlank;
 /**
  * @since 08-09-2012 10:10
  */
-public final class Manifacturer extends AbstractDomainClass {
+public final class Manufacturer extends AbstractDomainClass {
     private final String name;
 
-    private Manifacturer(final String name) {
+    private Manufacturer(final String name) {
         this.name = name;
     }
 
-    public static Manifacturer create(final String name) {
+    public static Manufacturer create(final String name) {
         if (!canCreate(name)) {
             throw new IllegalArgumentException("'name' can't be blank");
         }
-        return new Manifacturer(name);
+        return new Manufacturer(name);
     }
 
     public static boolean canCreate(final String name) {
@@ -32,7 +32,7 @@ public final class Manifacturer extends AbstractDomainClass {
             return false;
         }
 
-        final Manifacturer that = (Manifacturer) o;
+        final Manufacturer that = (Manufacturer) o;
 
         if (!name.equals(that.name)) {
             return false;

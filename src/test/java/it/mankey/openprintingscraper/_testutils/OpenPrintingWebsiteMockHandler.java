@@ -8,7 +8,11 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class OpenPrintingWebsite implements HttpHandler {
+/**
+ * Handler mocking OpenPrinting website pages
+ */
+public class OpenPrintingWebsiteMockHandler implements HttpHandler {
+
     @Override
     public void handle(final HttpExchange exchange) throws IOException {
         final String resourcePath = exchange.getRequestURI().getPath() + ".html";

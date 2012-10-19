@@ -19,10 +19,10 @@ final class PriceScannerHelper {
         return array(
                 nameValuePair("key", apiKey),
                 nameValuePair("country", country.name()),
-                nameValuePair("q", join(array(printer.getManifacturer().getName(), printer.getModel(), "printer -cartridge"), " ")),
+                nameValuePair("q", join(array(printer.getManufacturer().getName(), printer.getModel(), "printer -cartridge"), " ")),
                 nameValuePair("restrictBy",
                               join(array(
-                                      "brand:" + printer.getManifacturer().getName(),
+                                      "brand:" + printer.getManufacturer().getName(),
                                       "condition:new"
                               ),
                                    ","

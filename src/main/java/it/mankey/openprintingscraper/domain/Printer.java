@@ -7,23 +7,23 @@ import org.apache.commons.lang.StringUtils;
  */
 public final class Printer extends AbstractDomainClass {
     private final String model;
-    private final Manifacturer manifacturer;
+    private final Manufacturer manufacturer;
     private static final int PRIME_NUMBER = 31;
 
-    private Printer(final Manifacturer manifacturer, final String model) {
-        this.manifacturer = manifacturer;
+    private Printer(final Manufacturer manufacturer, final String model) {
+        this.manufacturer = manufacturer;
         this.model = model;
     }
 
-    public static boolean canCreate(final Manifacturer manifacturer, final String model) {
-        return (manifacturer != null) && !StringUtils.isBlank(model);
+    public static boolean canCreate(final Manufacturer manufacturer, final String model) {
+        return (manufacturer != null) && !StringUtils.isBlank(model);
     }
 
-    public static Printer create(final Manifacturer manifacturer, final String model) {
-        if (!canCreate(manifacturer, model)) {
+    public static Printer create(final Manufacturer manufacturer, final String model) {
+        if (!canCreate(manufacturer, model)) {
             throw new IllegalArgumentException("Invalid parameters. Manifacturer can't be null and model can't be empty");
         }
-        return new Printer(manifacturer, model);
+        return new Printer(manufacturer, model);
     }
 
     @Override
@@ -37,7 +37,7 @@ public final class Printer extends AbstractDomainClass {
 
         final Printer printer = (Printer) o;
 
-        if (manifacturer != null ? !manifacturer.equals(printer.manifacturer) : printer.manifacturer != null) {
+        if (manufacturer != null ? !manufacturer.equals(printer.manufacturer) : printer.manufacturer != null) {
             return false;
         }
         if (model != null ? !model.equals(printer.model) : printer.model != null) {
@@ -50,7 +50,7 @@ public final class Printer extends AbstractDomainClass {
     @Override
     public int hashCode() {
         int result = model != null ? model.hashCode() : 0;
-        result = PRIME_NUMBER * result + (manifacturer != null ? manifacturer.hashCode() : 0);
+        result = PRIME_NUMBER * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         return result;
     }
 
@@ -58,7 +58,7 @@ public final class Printer extends AbstractDomainClass {
         return model;
     }
 
-    public Manifacturer getManifacturer() {
-        return manifacturer;
+    public Manufacturer getManufacturer() {
+        return manufacturer;
     }
 }

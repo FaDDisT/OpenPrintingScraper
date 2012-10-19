@@ -12,7 +12,7 @@ import static it.mankey.openprintingscraper.domain.Fixtures.*;
 public class PrinterTest {
     @Test
     public void testCreate() throws Exception {
-        final Printer printer = Printer.create(WELL_KNOWN_MANIFACTURER_B, PRINTER_MODEL);
+        final Printer printer = Printer.create(WELL_KNOWN_MANUFACTURER_B, PRINTER_MODEL);
         Assert.assertNotNull(printer);
     }
 
@@ -23,17 +23,17 @@ public class PrinterTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreate_ShouldThrowExceptionWithBlankPrinterModel() throws Exception {
-        Printer.create(WELL_KNOWN_MANIFACTURER_B, " ");
+        Printer.create(WELL_KNOWN_MANUFACTURER_B, " ");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreate_ShouldThrowExceptionWithEmptyPrinterModel() throws Exception {
-        Printer.create(WELL_KNOWN_MANIFACTURER_B, "");
+        Printer.create(WELL_KNOWN_MANUFACTURER_B, "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testCreate_ShouldThrowExceptionWithNullPrinterModel() throws Exception {
-        Printer.create(WELL_KNOWN_MANIFACTURER_B, null);
+        Printer.create(WELL_KNOWN_MANUFACTURER_B, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -44,10 +44,10 @@ public class PrinterTest {
     @SuppressWarnings({"EqualsBetweenInconvertibleTypes", "ObjectEqualsNull"})
     @Test
     public void testEquals() throws Exception {
-        final Printer thisTwinPrinter = Printer.create(Manifacturer.create(MANIFACTURER_NAME), PRINTER_MODEL);
-        final Printer thatTwinPrinter = Printer.create(Manifacturer.create(MANIFACTURER_NAME), PRINTER_MODEL);
-        final Printer printerWithDifferentModel = Printer.create(Manifacturer.create(MANIFACTURER_NAME), PRINTER_MODEL + " DIFFERENCE");
-        final Printer printerWithDifferentManifacturer = Printer.create(Manifacturer.create(MANIFACTURER_NAME + " DIFFERENCE"), PRINTER_MODEL);
+        final Printer thisTwinPrinter = Printer.create(Manufacturer.create(MANIFACTURER_NAME), PRINTER_MODEL);
+        final Printer thatTwinPrinter = Printer.create(Manufacturer.create(MANIFACTURER_NAME), PRINTER_MODEL);
+        final Printer printerWithDifferentModel = Printer.create(Manufacturer.create(MANIFACTURER_NAME), PRINTER_MODEL + " DIFFERENCE");
+        final Printer printerWithDifferentManifacturer = Printer.create(Manufacturer.create(MANIFACTURER_NAME + " DIFFERENCE"), PRINTER_MODEL);
         Assert.assertEquals(thisTwinPrinter, thatTwinPrinter);
         Assert.assertEquals(thisTwinPrinter, thisTwinPrinter);
         Assert.assertFalse(thisTwinPrinter.equals(printerWithDifferentModel));
@@ -58,10 +58,10 @@ public class PrinterTest {
 
     @Test
     public void testHashCode() throws Exception {
-        final Printer thisTwinPrinter = Printer.create(WELL_KNOWN_MANIFACTURER_A, PRINTER_MODEL);
-        final Printer thatTwinPrinter = Printer.create(WELL_KNOWN_MANIFACTURER_A, PRINTER_MODEL);
-        final Printer otherModelPrinter = Printer.create(WELL_KNOWN_MANIFACTURER_A, PRINTER_MODEL + " DIFFERENCE");
-        final Printer otherManifacturerPrinter = Printer.create(WELL_KNOWN_MANIFACTURER_B, PRINTER_MODEL + " DIFFERENCE");
+        final Printer thisTwinPrinter = Printer.create(WELL_KNOWN_MANUFACTURER_A, PRINTER_MODEL);
+        final Printer thatTwinPrinter = Printer.create(WELL_KNOWN_MANUFACTURER_A, PRINTER_MODEL);
+        final Printer otherModelPrinter = Printer.create(WELL_KNOWN_MANUFACTURER_A, PRINTER_MODEL + " DIFFERENCE");
+        final Printer otherManifacturerPrinter = Printer.create(WELL_KNOWN_MANUFACTURER_B, PRINTER_MODEL + " DIFFERENCE");
         Assert.assertEquals(thisTwinPrinter.hashCode(), thatTwinPrinter.hashCode());
         Assert.assertEquals(thisTwinPrinter.hashCode(), thisTwinPrinter.hashCode());
         Assert.assertFalse(thisTwinPrinter.hashCode() == otherModelPrinter.hashCode()); // technically these could be the same
@@ -72,15 +72,15 @@ public class PrinterTest {
 
     @Test
     public void testGetModel() throws Exception {
-        final Printer printer = Printer.create(WELL_KNOWN_MANIFACTURER_A, PRINTER_MODEL);
+        final Printer printer = Printer.create(WELL_KNOWN_MANUFACTURER_A, PRINTER_MODEL);
         Assert.assertNotNull(printer.getModel());
         Assert.assertEquals(PRINTER_MODEL, printer.getModel());
     }
 
     @Test
     public void testGetManifacturer() throws Exception {
-        final Printer printer = Printer.create(WELL_KNOWN_MANIFACTURER_A, PRINTER_MODEL);
-        Assert.assertNotNull(printer.getManifacturer());
-        Assert.assertEquals(WELL_KNOWN_MANIFACTURER_A, printer.getManifacturer());
+        final Printer printer = Printer.create(WELL_KNOWN_MANUFACTURER_A, PRINTER_MODEL);
+        Assert.assertNotNull(printer.getManufacturer());
+        Assert.assertEquals(WELL_KNOWN_MANUFACTURER_A, printer.getManufacturer());
     }
 }
