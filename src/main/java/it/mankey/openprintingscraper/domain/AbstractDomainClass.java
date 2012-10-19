@@ -4,8 +4,14 @@ import it.mankey.openprintingscraper.util.JacksonObjectMapper;
 
 import java.io.IOException;
 
+/**
+ * Implements a generic toString method.
+ */
 public abstract class AbstractDomainClass {
 
+    /**
+     * @return JSON representation of the current instance
+     */
     @Override
     public String toString() {
         try {
