@@ -46,7 +46,7 @@ public final class PriceScanner {
             @Override
             public Quote map(final JsonNode element) {
                 final JsonNode priceNode = element.path("product").path("inventories").path(INVENTORY_INDEX).path("price");
-                final BigDecimal price = BigDecimal.valueOf(priceNode.asDouble());
+                final BigDecimal price = new BigDecimal(priceNode.asText());
                 return Quote.create(price);
             }
         });
