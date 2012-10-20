@@ -1,6 +1,8 @@
 package it.mankey.openprintingscraper.core;
 
-import it.mankey.openprintingscraper.domain.*;
+import it.mankey.openprintingscraper.domain.Country;
+import it.mankey.openprintingscraper.domain.Fixtures;
+import it.mankey.openprintingscraper.domain.Quote;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,8 +24,7 @@ public class PriceScannerIT {
 
     @Test
     public void testGetQuotes() throws Exception {
-        final Printer testPrinter = Printer.create(Manufacturer.create(Fixtures.WELL_KNOWN_BRAND), "Color LaserJet 5550");
-        final List<Quote> quotations = priceScanner.getQuotes(testPrinter, Country.Alpha2.GB);
+        final List<Quote> quotations = priceScanner.getQuotes(Fixtures.WELL_KNOWN_PRINTER_INSTANCE, Country.Alpha2.GB);
         Assert.assertTrue(!quotations.isEmpty());
     }
 }

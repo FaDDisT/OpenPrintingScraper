@@ -31,4 +31,5 @@ public class Fixtures {
 
     public static final BigDecimal A_QUOTE_PRICE = BigDecimal.ONE;
     public static final String WELL_KNOWN_BRAND = "HP";
+    public static final Printer WELL_KNOWN_PRINTER_INSTANCE = Printer.create(Manufacturer.create(WELL_KNOWN_BRAND), "Color LaserJet 5550");
 }

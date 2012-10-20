@@ -36,10 +36,10 @@ public final class PriceScanner {
         apiUrl = apiURL;
     }
 
-    public List<Quote> getQuotes(final Printer printer, final Country.Alpha2 country) throws IOException {
+    public List<Quote> getQuotes(final Printer printer, final Country.Alpha2 countryCode) throws IOException {
         final GetMethod httpGetProducts = new GetMethod(apiUrl.toString());
         httpGetProducts.setPath(SHOPPING_SEARCH_V1_PUBLIC_PRODUCTS_PATH);
-        httpGetProducts.setQueryString(buildQueryString(printer, country, apiKey));
+        httpGetProducts.setQueryString(buildQueryString(printer, countryCode, apiKey));
         httpClient.executeMethod(httpGetProducts);
         final JsonNode response = jsonMapper.readValue(httpGetProducts.getResponseBodyAsStream(), JsonNode.class);
         return CollectionUtils.map(response.path("items").elements(), new Mapper<JsonNode, Quote>() {
