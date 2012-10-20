@@ -40,7 +40,7 @@ public class OpenPrintingScraperTest {
     }
 
     public OpenPrintingScraperTest() throws IOException {
-        openPrintingScraper = OpenPrintingScraper.create(OPEN_PRINTING_TEST_HOST);
+        openPrintingScraper = OpenPrintingScraperImpl.create(OPEN_PRINTING_TEST_HOST);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class OpenPrintingScraperTest {
 
     @Test
     public void getPrinterByBrand() throws IOException {
-        final List<Printer> printers = openPrintingScraper.getPrinters(Manufacturer.create(Fixtures.WELL_KNOWN_BRAND));
+        final List<Printer> printers = openPrintingScraper.getPerfectlySupportedPrinters(Manufacturer.create(Fixtures.WELL_KNOWN_BRAND));
         Assert.assertTrue(!printers.isEmpty());
     }
 
