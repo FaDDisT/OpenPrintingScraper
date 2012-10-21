@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="/main.css"/>
+    <title>OpenPrinting Scraper Manufacturers</title>
+</head>
+<body>
+<h1>OpenPrinting Scraper Manufacturers</h1>
+<ul class="manufacturer-list">
+    <li th:each="manufacturer : ${manufacturers}"
+        th:text="${manufacturer.name}">Manufacturer 1
+    </li>
+</ul>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package it.mankey.openprintingscraper;
 
-import org.apache.http.HttpHost;
+import org.apache.commons.httpclient.HttpHost;
 
 public class TestConstants {
     public static final int TEST_HTTP_SERVER_PORT = 9888;

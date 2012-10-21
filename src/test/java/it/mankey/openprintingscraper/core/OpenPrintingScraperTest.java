@@ -61,7 +61,9 @@ public class OpenPrintingScraperTest {
     public void testHttpServer() throws IOException {
         final String urlString = "http://localhost:" + TEST_HTTP_SERVER_PORT + "/printers";
         final URL url = new URL(urlString);
-        System.out.println(IOUtils.toString(url.openStream()));
+        final String html = IOUtils.toString(url.openStream());
+        Assert.assertNotNull(html);
+        Assert.assertTrue(html.length() > 0);
     }
 
 
