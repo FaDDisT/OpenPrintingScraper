@@ -2,11 +2,12 @@ package it.mankey.openprintingscraper.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Function;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import it.mankey.openprintingscraper.domain.Country;
 import it.mankey.openprintingscraper.domain.Printer;
 import it.mankey.openprintingscraper.domain.Quote;
-import it.mankey.openprintingscraper.util.CollectionUtils;
-import it.mankey.openprintingscraper.util.Mapper;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
@@ -42,13 +43,13 @@ public final class PriceScanner {
         httpGetProducts.setQueryString(buildQueryString(printer, countryCode, apiKey));
         httpClient.executeMethod(httpGetProducts);
         final JsonNode response = jsonMapper.readValue(httpGetProducts.getResponseBodyAsStream(), JsonNode.class);
-        return CollectionUtils.map(response.path("items").elements(), new Mapper<JsonNode, Quote>() {
+        return Lists.newArrayList(Iterators.transform(response.path("items").elements(), new Function<JsonNode, Quote>() {
             @Override
-            public Quote map(final JsonNode element) {
+            public Quote apply(final JsonNode element) {
                 final JsonNode priceNode = element.path("product").path("inventories").path(INVENTORY_INDEX).path("price");
                 final BigDecimal price = new BigDecimal(priceNode.asText());
                 return Quote.create(price);
             }
-        });
+        }));
     }
 }

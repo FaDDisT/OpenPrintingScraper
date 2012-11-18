@@ -1,11 +1,11 @@
 package it.mankey.openprintingscraper.core;
 
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import it.mankey.openprintingscraper.domain.Manufacturer;
 import it.mankey.openprintingscraper.domain.Printer;
-import it.mankey.openprintingscraper.util.CollectionUtils;
-import it.mankey.openprintingscraper.util.Mapper;
 import org.apache.commons.httpclient.HttpHost;
-import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,8 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static it.mankey.openprintingscraper.util.CollectionUtils.array;
 
 public final class OpenPrintingScraperImpl implements OpenPrintingScraper {
 
@@ -59,31 +57,26 @@ public final class OpenPrintingScraperImpl implements OpenPrintingScraper {
         final Elements contents = doc.select("#content > div#two_col_col_1");
         final Elements printerNodes = contents.select("h3:contains(Perfectly), h3:contains(Mostly), a:gt(4)");
         final List<Element> perfectPrinterNodes = printerNodes.subList(1, printerNodes.indexOf(printerNodes.select("h3:contains(Mostly)").first()));
-        return CollectionUtils.map(perfectPrinterNodes, new Mapper<Element, Printer>() {
+        return Lists.transform(perfectPrinterNodes, new Function<Element, Printer>() {
             @Override
-            public Printer map(final Element element) {
-                return Printer.create(manufacturer, element.ownText());
+            public Printer apply(final Element el) {
+                return Printer.create(manufacturer, el.ownText());
             }
         });
     }
 
     private String getManifacturerPath(final Manufacturer manufacturer) {
-        return StringUtils.join(
-                array(
-                        openPrintingHost.toURI(),
-                        BASE_PATH,
-                        "manufacturer",
-                        manufacturer.getName()
-                ),
-                "/");
+        return Joiner.on("/").join(
+                openPrintingHost.toURI(),
+                BASE_PATH,
+                "manufacturer",
+                manufacturer.getName());
     }
 
     private String getIndexPath() {
-        return StringUtils.join(
-                array(
-                        openPrintingHost.toURI(),
-                        BASE_PATH
-                ),
-                "/");
+        return Joiner.on("/").join(
+                openPrintingHost.toURI(),
+                BASE_PATH
+        );
     }
 }
