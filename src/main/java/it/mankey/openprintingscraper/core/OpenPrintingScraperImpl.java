@@ -12,9 +12,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,10 +19,6 @@ import java.util.List;
 
 import static it.mankey.openprintingscraper.util.CollectionUtils.array;
 
-/**
- * @since 08-09-2012 10:37
- */
-@Service
 public final class OpenPrintingScraperImpl implements OpenPrintingScraper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OpenPrintingScraperImpl.class);
@@ -34,8 +27,7 @@ public final class OpenPrintingScraperImpl implements OpenPrintingScraper {
     private final HttpHost openPrintingHost;
     private static final String BASE_PATH = "printers";
 
-    @Autowired
-    public OpenPrintingScraperImpl(@Qualifier("openprinting-host") final HttpHost openPrintingHost) {
+    public OpenPrintingScraperImpl(final HttpHost openPrintingHost) {
         this.openPrintingHost = openPrintingHost;
     }
 
